@@ -1,3 +1,5 @@
+
+// ################## form logout  #####################
 document.getElementById("signupForm").addEventListener("submit", function(event) {
   
   var fullname = document.getElementById("fullname").value;
@@ -17,9 +19,10 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
   }
 
   var password = document.getElementById("password").value;
-  if (password.length < 6 || password.trim() === "") {
+  if (password.length < 4 || password.trim() === "") {
       alert("Le mot de passe doit contenir au moins 6 caractères.");
       event.preventDefault();
       return;
   }
 });
+
