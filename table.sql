@@ -9,16 +9,17 @@ CREATE TABLE dossier_medical (
 );
 
 CREATE TABLE "user" (
-    id SERIAL PRIMARY KEY,
-    full_name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(10) CHECK (status IN ('actif', 'archivé')) DEFAULT 'actif',
-    is_confirmed BOOLEAN DEFAULT FALSE, 
-    role_id INT DEFAULT 1, 
-    FOREIGN KEY (role_id) REFERENCES role(id)
+    id SERIAL PRIMARY KEY,               
+    full_name VARCHAR(255) NOT NULL,      
+    email VARCHAR(255) NOT NULL UNIQUE,  
+    password VARCHAR(255) NOT NULL,      
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    role_id INT REFERENCES role(id),    
+    status VARCHAR(50) NOT NULL CHECK (status IN ('actif', 'archivé')), 
+    is_confirmed BOOLEAN DEFAULT FALSE  
 );
+
 CREATE TABLE rendez_vous (
     id SERIAL PRIMARY KEY,
     cni VARCHAR(20) NOT NULL,

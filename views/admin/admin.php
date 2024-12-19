@@ -9,7 +9,7 @@ $offset = ($page - 1) * $limit;
 $sqlCount = $pdo->prepare("SELECT COUNT(*) FROM \"user\"");
 $sqlCount->execute();
 $total_users = $sqlCount->fetchColumn();
-$sql = $pdo->prepare("SELECT u.id, u.full_name, u.email, u.password, u.is_confirmed , r.name 
+$sql = $pdo->prepare("SELECT u.id as id_user, u.full_name, u.email, u.password, u.is_confirmed, u.status , r.name 
                       FROM \"user\" u 
                       JOIN \"role\" r ON u.role_id = r.id
                       LIMIT :limit OFFSET :offset");
@@ -30,8 +30,9 @@ $content = '
               <th class="py-2 px-4">ID</th>
               <th class="py-2 px-4">Utilisateur</th>
               <th class="py-2 px-4">Email</th>
-              <th class="py-2 px-4">Confirmation</th>
               <th class="py-2 px-4">Role</th>
+              <th class="py-2 px-4">status</th>
+              <th class="py-2 px-4">Confirmation</th>
             </tr>
           </thead>
           <tbody>';
@@ -41,13 +42,14 @@ $content = '
                 $confirmation = ($user['is_confirmed'] == 1) ? 'Confirmé' : 'Non confirmé';
                 $content .= '
                 <tr class="border-b hover:bg-gray-100">
-                    <td class="py-2 px-4">#' . htmlspecialchars($user['id']) . '</td>
+                    <td class="py-2 px-4">#' . htmlspecialchars($user['id_user']) . '</td>
                     <td class="py-2 px-4">' . htmlspecialchars($user['full_name']) . '</td>
                     <td class="py-2 px-4">' . htmlspecialchars($user['email']) . '</td>
                     <td class="py-2 px-4">' . htmlspecialchars($user['name']) . '</td>
+                    <td class="py-2 px-4">' . htmlspecialchars($user['status']) . '</td>
                     <td class="py-2 px-4">' . $confirmation . '</td>
                     <td class="py-2 px-4">
-                        <a href="#" class="text-blue-500 hover:underline">Modifier</a> | 
+                        <a href="edit_user.php?edit_id=' . $user['id_user'] . '" class="text-blue-500 hover:underline">Modifier</a> | 
                         <a href="#" class="text-red-500 hover:underline" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer cet utilisateur ?\')">Supprimer</a>
                     </td>
                 </tr>';
