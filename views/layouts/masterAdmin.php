@@ -21,12 +21,12 @@
                 </div>
             </div>
             <div class="grid grid-cols-3 gap-6 mb-8">
-                <div class="bg-white p-6 shadow-lg rounded-lg">
-                    <h3 class="text-xl font-semibold text-gray-800">Utilisateurs</h3>
+                <div class="users bg-white p-6 shadow-lg rounded-lg">
+                    <h3 class="text-xl font-semibold text-gray-800">Users</h3>
                     <p class="text-2xl font-bold text-blue-600">120</p>
                 </div>
-                <div class="bg-white p-6 shadow-lg rounded-lg">
-                    <h3 class="text-xl font-semibold text-gray-800">Produits</h3>
+                <div class="archive bg-white p-6 shadow-lg rounded-lg" >
+                    <h3 class="text-xl font-semibold text-gray-800">Archive</h3>
                     <p class="text-2xl font-bold text-blue-600">45</p>
                 </div>
                 <div class="bg-white p-6 shadow-lg rounded-lg">
@@ -34,11 +34,30 @@
                     <p class="text-2xl font-bold text-blue-600">78</p>
                 </div>
             </div>
-            <section class="content">
+            <section class="UserActif">
                 <?php echo $content; ?>
+            </section>
+            <section class="usersArchive hidden">
+            <?php echo $userArchif; ?>
             </section>
         </div>
 
     </div>
+
+    <script>
+        const UserActif = document.querySelector(".UserActif");  
+        const usersArchive = document.querySelector(".usersArchive"); 
+        const users = document.querySelector(".users");  
+        const archive = document.querySelector(".archive"); 
+
+        archive.addEventListener('click', function() {
+            usersArchive.classList.remove('hidden');
+            UserActif.classList.add('hidden');
+        });
+        users.addEventListener('click', function() {
+            UserActif.classList.remove('hidden');
+            usersArchive.classList.add('hidden');
+        });
+    </script>
 </body>
 </html>
