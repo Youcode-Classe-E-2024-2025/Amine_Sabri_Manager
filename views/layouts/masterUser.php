@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,8 +16,38 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        .message-banner {
+            padding: 10px 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .error {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
 </head>
 <body class="poppins text-gray-500">
+  <div class="flex justify-center">
+      <?php
+      if (isset($_SESSION['message'])) {
+          $message = $_SESSION['message'];
+          $messageType = $_SESSION['message_type']; 
+          echo "<div class='message-banner w-fit " . $messageType . "'>$message</div>";
+          unset($_SESSION['message']);
+          unset($_SESSION['message_type']);
+      }
+      ?>
+  </div>
+
     <!-- Section hero et barre de navigation -->
     <section class="bg-light pb-6">
         <div class="container px-4 mx-auto">
@@ -189,19 +223,23 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-1/2 px-4">
-                    <div class="lg:max-w-md p-6 bg-gray-50 text-center rounded-lg shadow-2xl">
-                        <form action="#">
-                            <span class="text-sm text-gray-500 font-semibold uppercase">INSCRIPTION</span>
-                            <h3 class="mb-8 text-2xl font-bold font-heading">Créer un compte</h3>
-                            <input class="w-full py-3 pl-3 mb-4 bg-white rounded-lg" type="email"
-                                placeholder="Adresse email">
-                            <input class="w-full py-3 pl-3 mb-4 bg-white rounded-lg" type="password" placeholder="Mot de passe">
-                            <input class="w-full py-3 pl-3 mb-4 bg-white rounded-lg" type="password" placeholder="Retapez le mot de passe">
+                    <div class="lg:max-w-md p-6 bg-gray-50  rounded-lg shadow-2xl">
+                        <form action="rendezVous.php" method = "POST">
+                            <h1 class="text-sm text-gray-500 font-semibold uppercase text-center">DEMANDE DE RENDEZ-VOUS</h1>
+                            <div class="mb-4">
+                                <!-- Label et champ pour le Numéro CNI -->
+                                <label for="cni"  class=" text-sm text-gray-500 font-semibold mb-2   ">CNI :</label>
+                                <input id="cni" name="cni" class="w-full py-3 pl-3 bg-white rounded-lg" type="text" placeholder="Numéro CNI" required>
+                            </div>
+                            <div>
+                                <label for="date">Date :</label>
+                                <input id = "id" name="date" class="w-full py-3 pl-3 mb-4 bg-white rounded-lg" type="date" placeholder="Date de Rendez-vous" required>
+                            </div>
                             <label class="inline-block mb-4">
-                                <input class="mr-1" type="checkbox" name="terms" value="1">
-                                <span class="text-sm text-gray-500">En vous inscrivant, vous acceptez notre politique concernant vos données personnelles.</span>
+                                <input class="mr-1" type="checkbox" name="terms" value="1" required>
+                                <span class="text-sm text-gray-500">En soumettant cette demande, vous acceptez notre politique concernant vos données personnelles.</span>
                             </label>
-                            <button class="w-full inline-block px-6 py-3 mr-4 text-sm text-white font-bold leading-loose bg-teal-500 hover:bg-indigo-700 rounded transition duration-200">S'inscrire</button>
+                            <button class="w-full inline-block px-6 py-3 mr-4 text-sm text-white font-bold leading-loose bg-teal-500 hover:bg-indigo-700 rounded transition duration-200">Envoyer la demande</button>
                         </form>
                     </div>
                 </div>
