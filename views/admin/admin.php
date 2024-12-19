@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../../db.php');
 
 $limit = 3;
@@ -42,15 +43,14 @@ $content = '
                 $confirmation = ($user['is_confirmed'] == 1) ? 'Confirmé' : 'Non confirmé';
                 $content .= '
                 <tr class="border-b hover:bg-gray-100">
-                    <td class="py-2 px-4">#' . htmlspecialchars($user['id_user']) . '</td>
+                    <td class="py-2 px-4">' . htmlspecialchars($user['id_user']) . '</td>
                     <td class="py-2 px-4">' . htmlspecialchars($user['full_name']) . '</td>
                     <td class="py-2 px-4">' . htmlspecialchars($user['email']) . '</td>
                     <td class="py-2 px-4">' . htmlspecialchars($user['name']) . '</td>
                     <td class="py-2 px-4">' . htmlspecialchars($user['status']) . '</td>
                     <td class="py-2 px-4">' . $confirmation . '</td>
                     <td class="py-2 px-4">
-                        <a href="edit_user.php?edit_id=' . $user['id_user'] . '" class="text-blue-500 hover:underline">Modifier</a> | 
-                        <a href="#" class="text-red-500 hover:underline" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer cet utilisateur ?\')">Supprimer</a>
+                        <a href="edit_user.php?edit_id=' . $user['id_user'] . '" class="text-blue-500 hover:underline">Modifier</a> 
                     </td>
                 </tr>';
             }
@@ -110,18 +110,18 @@ $userArchif = '
 
             
             foreach ($usersArchive as $user) {
+                $_SESSION['full_name'] = $user['full_name']; 
                 $confirmation = ($user['is_confirmed'] == 1) ? 'Confirmé' : 'Non confirmé';
                 $userArchif .= '
                 <tr class="border-b hover:bg-gray-100">
-                    <td class="py-2 px-4">#' . htmlspecialchars($user['id_user']) . '</td>
+                    <td class="py-2 px-4">' . htmlspecialchars($user['id_user']) . '</td>
                     <td class="py-2 px-4">' . htmlspecialchars($user['full_name']) . '</td>
                     <td class="py-2 px-4">' . htmlspecialchars($user['email']) . '</td>
                     <td class="py-2 px-4">' . htmlspecialchars($user['name']) . '</td>
                     <td class="py-2 px-4">' . htmlspecialchars($user['status']) . '</td>
                     <td class="py-2 px-4">' . $confirmation . '</td>
                     <td class="py-2 px-4">
-                        <a href="edit_user.php?edit_id=' . $user['id_user'] . '" class="text-blue-500 hover:underline">Modifier</a> | 
-                        <a href="#" class="text-red-500 hover:underline" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer cet utilisateur ?\')">Supprimer</a>
+                        <a href="edit_user.php?edit_id=' . $user['id_user'] . '" class="text-blue-500 hover:underline">Modifier</a> 
                     </td>
                 </tr>';
             }

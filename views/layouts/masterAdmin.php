@@ -14,9 +14,9 @@
 
         <div class="flex-1 p-8">
             <div class="flex justify-between items-center mb-6">
-                <h2 class="text-3xl font-semibold text-gray-700">Bienvenue, Admin</h2>
+                <h2 class="text-3xl font-semibold text-gray-700"></h2>
                 <div class="flex items-center space-x-4">
-                <button class="bg-blue-600 text-white py-2 px-4 rounded">Nouveau</button>
+                <button class="bg-blue-600 text-white py-2 px-4 rounded"><?php echo $_SESSION['full_name']?></button>
                 <button class="bg-gray-200 py-2 px-4 rounded">Déconnexion</button>
                 </div>
             </div>
@@ -40,8 +40,13 @@
                     <p class="text-2xl font-bold text-blue-600"><?php echo $total_users_archive?></p>
                 </div>
                 <div class="bg-white p-6 shadow-lg rounded-lg">
-                    <h3 class="text-xl font-semibold text-gray-800">Commandes</h3>
-                    <p class="text-2xl font-bold text-blue-600">78</p>
+                    <h3 class="text-xl font-semibold text-gray-800">Users Created Today</h3>
+                    <?php 
+                        $sqlCount = $pdo->prepare("SELECT COUNT(*) FROM \"user\" WHERE created_at::date = CURRENT_DATE;");
+                        $sqlCount->execute();
+                        $total_users_InsetTODay = $sqlCount->fetchColumn();
+                    ?>
+                    <p class="text-2xl font-bold text-blue-600"><?php echo $total_users_InsetTODay?></p>
                 </div>
             </div>
             <section class="UserActif">
