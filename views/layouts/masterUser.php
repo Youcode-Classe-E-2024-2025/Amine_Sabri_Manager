@@ -10,6 +10,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body class="poppins text-gray-500">
     <!-- Section hero et barre de navigation -->
@@ -33,13 +35,13 @@
                     <a href="#" class="inline-block px-6 py-3 text-white font-bold hover:bg-teal-500 rounded transition duration-200 bg-indigo-700" >Rendez-vous</a>
                 </div>
                 <div class="w-full md:w-1/2 px-4 order-1 md:order-2">
-                    <img class="" src="../../assets/images/docteur.png" alt="Docteur">
+                    <img class="" src="../../assets/images/docteur.png" alt="Docteur" data-aos="fade-up" data-aos-duration="1500">
                 </div>
             </div>
         </div>
     </section>
     <!-- Section services -->
-    <section class="pt-12 bg-indigo-700">
+    <section class="pt-12 bg-indigo-700" data-aos="fade-up" data-aos-duration="1500">
         <div class="container px-4 pb-32 mx-auto">
             <div class="max-w-3xl mx-auto text-center mb-12">
                 <h2 class="mb-4 text-2xl md:text-4xl text-white font-bold">Une clinique à la pointe pour vous proposer les meilleurs soins</h2>
@@ -75,7 +77,7 @@
         </div>
     </section>
     <!-- Section présentation -->
-    <section class="mt-24 lg:py-16">
+    <section class="mt-24 lg:py-16" data-aos="fade-up" data-aos-duration="1500">
         <div class="container p-4 mx-auto">
             <div class="flex flex-wrap items-center gap-y-6">
                 <div class="w-full md:w-1/2 px-4 order-2 md:order-1">
@@ -94,11 +96,11 @@
     <!-- Section équipe médicale -->
     <section class="py-20">
         <div class="container px-4 mx-auto">
-            <div class="max-w-3xl mx-auto mb-12 lg:mb-16 text-center">
+            <div class="max-w-3xl mx-auto mb-12 lg:mb-16 text-center" data-aos="fade-up" data-aos-duration="1500">
                 <h2 class="mt-2 mb-4 text-4xl lg:text-5xl font-bold text-gray-800">Une équipe hautement qualifiée</h2>
                 <p class="text-lg leading-loose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
             </div>
-            <div class="flex flex-wrap">
+            <div class="flex flex-wrap" data-aos="fade-up" data-aos-duration="1500">
                 <div class="w-full md:w-1/2 lg:w-1/3 p-4">
                     <div class="p-6 pb-12 bg-gray-50 text-center rounded-lg">
                         <img class="w-full mx-auto mb-6 rounded-lg" src="../../assets/images/team-01.png" alt="">
@@ -176,7 +178,7 @@
         </div>
     </section>
     <!-- Section formulaire -->
-    <section class="relative py-20">
+    <section class="relative py-20 " data-aos="fade-up" data-aos-duration="1500">
         <div class="absolute top-0 left-0 lg:bottom-0 h-[28rem] lg:h-auto w-full lg:w-8/12 bg-indigo-700"></div>
         <div class="relative container px-4 mx-auto">
             <div class="flex flex-wrap items-center">
@@ -228,5 +230,8 @@
             </div>
         </div>
     </footer>
+    <script>
+        AOS.init(); // Initialise AOS pour les animations au défilement
+    </script>
 </body>
 </html>
