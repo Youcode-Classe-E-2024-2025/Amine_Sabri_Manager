@@ -51,6 +51,7 @@ $content = '
                     <td class="py-2 px-4">' . $confirmation . '</td>
                     <td class="py-2 px-4">
                         <a href="edit_user.php?edit_id=' . $user['id_user'] . '" class="text-blue-500 hover:underline">Modifier</a> 
+                        <a href="delete_user.php?id=' . $user['id_user'] . '" class="text-red-500 hover:underline" onclick="return confirm(\'Êtes-vous sûr de vouloir supprimer cet utilisateur ?\')">Supprimer</a>
                     </td>
                 </tr>';
             }
