@@ -23,11 +23,21 @@
             <div class="grid grid-cols-3 gap-6 mb-8">
                 <div class="users bg-white p-6 shadow-lg rounded-lg">
                     <h3 class="text-xl font-semibold text-gray-800">Users</h3>
-                    <p class="text-2xl font-bold text-blue-600">120</p>
+                    <?php 
+                        $sqlCount = $pdo->prepare("SELECT COUNT(*) FROM \"user\" WHERE status = 'actif'");
+                        $sqlCount->execute();
+                        $total_users = $sqlCount->fetchColumn();
+                    ?>
+                    <p class="text-2xl font-bold text-blue-600"><?php echo $total_users?></p>
                 </div>
                 <div class="archive bg-white p-6 shadow-lg rounded-lg" >
                     <h3 class="text-xl font-semibold text-gray-800">Archive</h3>
-                    <p class="text-2xl font-bold text-blue-600">45</p>
+                    <?php 
+                        $sqlCount = $pdo->prepare("SELECT COUNT(*) FROM \"user\" WHERE status = 'archivé'");
+                        $sqlCount->execute();
+                        $total_users_archive = $sqlCount->fetchColumn();
+                    ?>
+                    <p class="text-2xl font-bold text-blue-600"><?php echo $total_users_archive?></p>
                 </div>
                 <div class="bg-white p-6 shadow-lg rounded-lg">
                     <h3 class="text-xl font-semibold text-gray-800">Commandes</h3>

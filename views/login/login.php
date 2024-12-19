@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     if (!empty($email) && !empty($password)) {
-        $sql = 'SELECT u.id, u.full_name, u.email, u.password,u.is_confirmed,r.name
+        $sql = 'SELECT u.id, u.full_name, u.email, u.password,u.is_confirmed ,u.status,r.name
                 FROM "user" u
                 JOIN "role" r ON u.role_id = r.id
                 WHERE u.email = :email';
@@ -36,10 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             alert('Veuillez attendre que votre compte soit confirmé.');
                             window.location.href = 'login.php';
                           </script>";
-                } else {
+                }elseif ($user['status'] === "archivé"){
+                    echo "<script>
+                            alert('Votre compte est bloqué temporairement.');
+                            window.location.href = 'login.php';
+                          </script>";
+                }else {
                     header('Location: ../user/user.php');
                     exit;
                 }
+                 
             }
              elseif ($user['name'] === 'admin') {
                 header('Location: ../admin/admin.php');
