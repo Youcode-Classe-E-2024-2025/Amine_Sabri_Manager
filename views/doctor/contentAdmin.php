@@ -1,6 +1,36 @@
 <?php
 include("../../db.php");
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = $_POST['id'];
+    $sql = "SELECT is_confirmed FROM rendez_vous WHERE id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id]);
+    $appointment = $stmt->fetch();
+    if ($appointment) {
+        $new_is_confirmed = ($appointment['is_confirmed'] == 0) ? 1 : 0;
+        $update_sql = "UPDATE rendez_vous SET is_confirmed = ? WHERE id = ?";
+        $update_stmt = $pdo->prepare($update_sql);
+        if ($update_stmt->execute([$new_is_confirmed, $id])) {
+            header("Location: ./doctor.php");
+            exit();
+        } else {
+            echo "Error updating the appointment status.";
+        }
+    } else {
+        echo "Appointment not found.";
+    }
+} 
+?>
+
+
+
+
+
+
+<?php
+include("../../db.php");
+
 // Pagination Settings
 $results_per_page = 4;
 
@@ -56,27 +86,36 @@ $content = '
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">';
 
-while ($row = $sqlState_all->fetch(PDO::FETCH_ASSOC)) {
-    $content .= '
-    <tr class="text-gray-700 dark:text-gray-400">
-        <td class="px-4 py-3">
-            <div class="flex items-center text-sm">
-                <div>
-                    <p class="font-semibold">' . htmlspecialchars($row['full_name']) . '</p>
-                </div>
-            </div>
-        </td>
-        <td class="px-4 py-3 text-sm">' . htmlspecialchars($row['cni']) . '</td>
-        <td class="px-4 py-3 text-xs">
-            <span class="px-2 py-1 font-semibold leading-tight ' . 
-                ($row['is_confirmed'] == true ? 'text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100' : 'text-red-700 bg-red-100 dark:bg-red-700 dark:text-red-100') . '">
-                ' . ($row['is_confirmed'] == true ? 'Approved' : 'Pending') . '
-            </span>
-        </td>
-        <td class="px-4 py-3 text-sm">' . htmlspecialchars($row['date_rendez_vous']) . '</td>
-    </tr>';
-}
-
+            while ($row = $sqlState_all->fetch(PDO::FETCH_ASSOC)) {
+                $content .= '
+                <tr class="text-gray-700 dark:text-gray-400">
+                    <td class="px-4 py-3">
+                        <div class="flex items-center text-sm">
+                            <div>
+                                <p class="font-semibold">' . htmlspecialchars($row['full_name']) . '</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4 py-3 text-sm">' . htmlspecialchars($row['cni']) . '</td>
+                    <td class="px-4 py-3 text-xs">
+                        <span class="px-2 py-1 font-semibold leading-tight ' . 
+                            ($row['is_confirmed'] == 1 ? 'text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100' : 'text-red-700 bg-red-100 dark:bg-red-700 dark:text-red-100') . '">
+                            ' . ($row['is_confirmed'] == 1 ? 'Approved' : 'Pending') . '
+                        </span>
+                    </td>
+                    <td class="px-4 py-3 text-sm">' . htmlspecialchars($row['date_rendez_vous']) . '</td>
+                    <td class="px-4 py-3">
+                        <!-- Add the form to update the confirmation status -->
+                        <form method="POST" action="contentAdmin.php">
+                            <input type="hidden" name="id" value="' . $row['id'] . '" />
+                            <input type="checkbox" name="is_confirmed"  value="' . ($row['is_confirmed'] == 1 ? 'checked' : '') . '" />
+                            <button type="submit" class="px-4 py-2 bg-blue-500 text-white">Update</button>
+                        </form>
+                    </td>
+                </tr>';
+            }
+            
+            
 $content .= '
             </tbody>
         </table>
