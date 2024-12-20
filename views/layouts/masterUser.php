@@ -18,6 +18,9 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         .message-banner {
             padding: 10px 20px;
             margin: 10px 0;
@@ -66,7 +69,7 @@ session_start();
                 <div class="w-full px-4 py-8 mb-8 order-2 md:order-1 md:w-1/2  md:mb-0">
                     <h2 class="mb-8 text-3xl lg:text-5xl font-bold text-gray-800">Une équipe à votre écoute pour <span class="text-teal-500">vous soigner</span></h2>
                     <p class="mb-6 lg:text-lg">Notre clinique offre des soins de qualité dans un cadre moderne et accueillant, avec une équipe dédiée à votre bien-être et une large gamme de services médicaux personnalisés.</p>
-                    <a href="#" class="inline-block px-6 py-3 text-white font-bold hover:bg-teal-500 rounded transition duration-200 bg-indigo-700" >Rendez-vous</a>
+                    <a href="#rendez_vous"  class=" inline-block px-6 py-3 text-white font-bold hover:bg-teal-500 rounded transition duration-200 bg-indigo-700" >Rendez-vous</a>
                 </div>
                 <div class="w-full md:w-1/2 px-4 order-1 md:order-2">
                     <img class="" src="../../assets/images/docteur.png" alt="Docteur" data-aos="fade-up" data-aos-duration="1500">
@@ -222,7 +225,7 @@ session_start();
                         <p class="text-gray-50 lg:pr-10 leading-loose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan aliquet orci.</p>
                     </div>
                 </div>
-                <div class="w-full lg:w-1/2 px-4">
+                <div class="w-full lg:w-1/2 px-4" id="rendez_vous">
                     <div class="lg:max-w-md p-6 bg-gray-50  rounded-lg shadow-2xl">
                         <form action="rendezVous.php" method = "POST">
                             <h1 class="text-sm text-gray-500 font-semibold uppercase text-center">DEMANDE DE RENDEZ-VOUS</h1>

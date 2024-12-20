@@ -23,13 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             exit();
         } catch (PDOException $e) {
             $_SESSION['message'] = "Error: " . $e->getMessage();
-            $_SESSION['message_type'] = 'error';  // Error message type
+            $_SESSION['message_type'] = 'error';
             header("location: ./user.php");
             exit();
         }
     } else {
         $_SESSION['message'] = "Please fill in all fields.";
-        $_SESSION['message_type'] = 'error';  // Error message type
+        $_SESSION['message_type'] = 'error';
         header("location: ./user.php");
         exit();
     }
