@@ -43,7 +43,7 @@ CREATE TABLE chambre (
     chambre_id SERIAL PRIMARY KEY,
     num INT NOT NULL,
     type VARCHAR(50),
-    statut VARCHAR(50) CHECK (statut IN ('disponible', 'occupée')),
+    statut VARCHAR(50),
     dossier_id INT NOT NULL,
     FOREIGN KEY (dossier_id) REFERENCES dossier_medical(dossier_id) ON DELETE CASCADE
 );
@@ -53,3 +53,5 @@ CREATE TABLE chambre (
 SELECT conname, pg_get_constraintdef(oid)
 FROM pg_constraint
 WHERE conrelid = 'chambre'::regclass;
+
+TRUNCATE TABLE chambre RESTART IDENTITY CASCADE;
