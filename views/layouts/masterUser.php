@@ -74,15 +74,22 @@ if (isset($_POST['logout'])) {
                     <?php
                         if (isset($_SESSION['full_name'])) {
                             echo "<h1 class=\"border-2 border-indigo-700 text-white rounded-lg p-[2px] pl-10 pr-10 bg-indigo-700\">" . $_SESSION['full_name'] . "</h1>";
-
+                            
                         } else {
                             echo "";
                         }
-                    ?>  
+                        ?>  
 
-                    <form action="" method="POST">
-                        <button type="submit" name="logout" class="bg-indigo-700 text-white px-2 py-1 rounded hover:bg-gray-500"><i class="bi bi-box-arrow-right"></i>Logout</button>
-                    </form>
+                    <div class="retalive">
+                        <img src="../../assets/images/team-06.png" class ="Profil" alt="" width="35"> 
+                        <div class= "menu absolute right-3 top-16 hidden">
+                            <form action="" method="POST" >
+                            <button type="submit" name="logout" class="bg-indigo-400 text-white px-2 py-1 rounded hover:bg-gray-500"><i class="bi bi-box-arrow-right"></i>Logout</button>
+                        </form>
+                        </div>  
+                        
+                    </div>
+                    
                 </div>
                 
             </nav>
@@ -293,7 +300,14 @@ if (isset($_POST['logout'])) {
         </div>
     </footer>
     <script>
-        AOS.init(); // Initialise AOS pour les animations au défilement
+        AOS.init(); 
+
+        const Profil = document.querySelector(".Profil");
+        const menu = document.querySelector(".menu");
+        Profil.addEventListener("click", function() {
+            menu.classList.toggle('hidden');
+        });
+
     </script>
 </body>
 </html>

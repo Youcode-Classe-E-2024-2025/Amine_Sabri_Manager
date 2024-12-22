@@ -12,7 +12,7 @@ if (isset($_POST['logout'])) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windmill Dashboard</title>
+    <title>Doctor Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
@@ -31,8 +31,8 @@ if (isset($_POST['logout'])) {
       <!-- Desktop sidebar -->
       <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
         <div class="py-4 text-gray-500 dark:text-gray-400">
-          <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#">
-            Windmill
+          <a class="text-indigo-700 font-bold flex  text-4xl ">
+            <img src="../../assets/images/logo.svg" alt="" width="35">Medic
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
@@ -253,7 +253,7 @@ if (isset($_POST['logout'])) {
                   </svg>
                 </div>
                 <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Rendez-vous To Day</p>
+                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">Rendez-vous aujourd'hui</p>
                     <?php
                       include("../../db.php");
                       $sql = "SELECT count(*) FROM \"rendez_vous\" WHERE date::date = CURRENT_DATE";

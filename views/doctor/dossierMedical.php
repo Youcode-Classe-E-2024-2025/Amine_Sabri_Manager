@@ -38,6 +38,7 @@
             <td class="px-4 py-3 text-sm">' . $row['Statut Chambre'] . '</td>
             <td>
                 <a href="delete_dossier.php?dossier_id=' . htmlspecialchars($row['dossier_id']) . '" class="text-red-500 hover:text-red-700"><i class="bi bi-trash-fill"></i></a>
+                <a href="delete_dossier.php?dossier_id=' . htmlspecialchars($row['dossier_id']) . '" class="text-blue-500 hover:text-blue-700"><i class="bi bi-pencil-square"></i></a>
             </td>
         </tr>';
     }
