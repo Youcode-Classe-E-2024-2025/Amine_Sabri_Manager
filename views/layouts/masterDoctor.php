@@ -357,6 +357,12 @@ if (isset($_POST['logout'])) {
               dossier_medical.classList.add("hidden");
             });
           });
+
+          card_rendez_vousToDay.addEventListener("click",function(){
+            contentAll_rendez_vousToDay.classList.remove("hidden");
+            contentAll_rendez_vous.classList.add("hidden");
+            dossier_medical.classList.add("hidden");
+          });
     </script>
   </body>
 </html>
