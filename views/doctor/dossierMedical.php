@@ -8,17 +8,6 @@
 
     $sqlState = $pdo->query($sql);
     $results = $sqlState->fetchAll(PDO::FETCH_ASSOC);
-
-    // foreach ($results as $row) {
-    //     echo "Full Name: " . htmlspecialchars($row['full_name']) . "<br>";
-    //     echo "Date Dossier: " . htmlspecialchars($row['date_dossie']) . "<br>";
-    //     echo "Diagnostic: " . htmlspecialchars($row['diagnostic']) . "<br>";
-    //     echo "Traitement: " . htmlspecialchars($row['traitement']) . "<br>";
-    //     echo "N° Chambre: " . htmlspecialchars($row['N° Chambre']) . "<br>";
-    //     echo "Type: " . htmlspecialchars($row['type']) . "<br>";
-    //     echo "Statut Chambre: " . htmlspecialchars($row['Statut Chambre']) . "<br><hr>";
-    // }
-
     $content_dossier= '
     <div class="w-full overflow-hidden rounded-lg shadow-xs">
         <div class="w-full overflow-x-auto">
@@ -48,7 +37,7 @@
             <td class="px-4 py-3 text-sm">' . $row['type'] . '</td>
             <td class="px-4 py-3 text-sm">' . $row['Statut Chambre'] . '</td>
             <td>
-                <a href="delete_dossier.php?dossier_id=' . htmlspecialchars($row['dossier_id']) . '" class="text-red-500 hover:text-red-700">b</a>
+                <a href="delete_dossier.php?dossier_id=' . htmlspecialchars($row['dossier_id']) . '" class="text-red-500 hover:text-red-700"><i class="bi bi-trash-fill"></i></a>
             </td>
         </tr>';
     }

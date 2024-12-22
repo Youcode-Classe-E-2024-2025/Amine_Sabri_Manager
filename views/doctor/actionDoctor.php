@@ -1,8 +1,7 @@
 <?php
-include('../../db.php'); // Assurez-vous que le fichier db.php est bien inclus
+include('../../db.php'); 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer et nettoyer les données du formulaire
     $patient = trim($_POST['patient']);
     $date_dossier = trim($_POST['date_dossier']);
     $diagnostic = trim($_POST['diagnostic']);
@@ -44,15 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
 
             header("location:./doctor.php");
-            // echo "Dossier médical ajouté avec succès !";
 
 
         } catch (Exception $e) {
-            // Si une erreur survient pendant l'exécution des requêtes
             echo "Erreur lors de l'ajout du dossier médical: " . $e->getMessage();
         }
     } else {
-        // Afficher un message d'erreur si les champs sont invalides
         echo "Tous les champs sont requis et le numéro doit être un nombre valide.";
     }
 }

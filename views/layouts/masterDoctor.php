@@ -10,6 +10,7 @@
       defer
     ></script>
     <script src="../../assets/js/init-alpine.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     
   </head>
@@ -325,10 +326,10 @@
             >
               Dashboard
             </h2>
-            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+            <div class="flex justify-around mb-8">
               <!-- Card -->
               <div
-                class="card-rendez-vous flex items-center p-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
+                class="card-rendez-vous flex items-center pr-24 p-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
               >
                 <div
                   class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500"
@@ -351,7 +352,7 @@
               </div>
               <!-- Card -->
               <div
-                class="card-rendez-vousToDay flex items-center p-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
+                class="card-rendez-vousToDay flex items-center pr-24 p-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
               >
                 <div
                   class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500"
@@ -376,7 +377,7 @@
               </div>
               <!-- Card -->
               <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
+                class=" card_dossier_medical flex items-center pr-24 p-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
               >
                 <div
                   class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500"
@@ -391,7 +392,7 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    New sales
+                    dossier_medical
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
@@ -401,33 +402,7 @@
                 </div>
               </div>
               <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-md dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fill-rule="evenodd"
-                      d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    Pending contacts
-                  </p>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
-                    35
-                  </p>
-                </div>
-              </div>
+              
             </div>
 
             <!-- New Table -->
@@ -443,7 +418,7 @@
                   echo $content_today;
                 ?>
              </section>
-             <section class="dossier_medical">
+             <section class="dossier_medical hidden">
                 <?php 
                   include_once ("../doctor/dossierMedical.php");
                   echo $content_dossier;
@@ -457,16 +432,26 @@
     <script>
           const contentAll_rendez_vous = document.querySelector(".contentAll_rendez_vous");
           const contentAll_rendez_vousToDay = document.querySelector(".contentAll_rendez_vousToDay");
+          const dossier_medical = document.querySelector(".dossier_medical");
           const card_rendez_vous = document.querySelector(".card-rendez-vous");
           const card_rendez_vousToDay = document.querySelector(".card-rendez-vousToDay");
+          const card_dossier_medical= document.querySelector(".card_dossier_medical");
 
           card_rendez_vous.addEventListener("click",function(){
             contentAll_rendez_vous.classList.remove("hidden");
             contentAll_rendez_vousToDay.classList.add("hidden");
+            dossier_medical.classList.add("hidden");
           });
 
           card_rendez_vousToDay.addEventListener("click",function(){
             contentAll_rendez_vousToDay.classList.remove("hidden");
+            contentAll_rendez_vous.classList.add("hidden");
+            dossier_medical.classList.add("hidden");
+          });
+
+          card_dossier_medical.addEventListener("click",function(){
+            dossier_medical.classList.remove("hidden");
+            contentAll_rendez_vousToDay.classList.add("hidden");
             contentAll_rendez_vous.classList.add("hidden");
           });
     </script>
