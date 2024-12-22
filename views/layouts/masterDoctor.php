@@ -363,6 +363,14 @@ if (isset($_POST['logout'])) {
             contentAll_rendez_vous.classList.add("hidden");
             dossier_medical.classList.add("hidden");
           });
+
+          card_dossier_medical.forEach(card => {
+            card.addEventListener("click", function() {
+              dossier_medical.classList.remove("hidden");
+              contentAll_rendez_vousToDay.classList.add("hidden");
+              contentAll_rendez_vous.classList.add("hidden");
+            });
+          });
     </script>
   </body>
 </html>
