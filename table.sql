@@ -47,3 +47,9 @@ CREATE TABLE chambre (
     dossier_id INT NOT NULL,
     FOREIGN KEY (dossier_id) REFERENCES dossier_medical(dossier_id) ON DELETE CASCADE
 );
+
+
+
+SELECT conname, pg_get_constraintdef(oid)
+FROM pg_constraint
+WHERE conrelid = 'chambre'::regclass;
