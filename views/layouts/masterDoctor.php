@@ -345,7 +345,8 @@ if (isset($_POST['logout'])) {
           //   });
           // });
           const contentAll_rendez_vous = document.querySelector(".contentAll_rendez_vous");
-          contentAll_rendez_vousToDay = document.querySelector(".contentAll_rendez_vousToDay")
+          contentAll_rendez_vousToDay = document.querySelector(".contentAll_rendez_vousToDay");
+          const dossier_medical = document.querySelector(".dossier_medical");
     </script>
   </body>
 </html>
