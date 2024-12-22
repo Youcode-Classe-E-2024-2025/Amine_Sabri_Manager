@@ -121,4 +121,7 @@ Ce projet est sous licence **MIT**. Consultez le fichier [LICENSE](LICENSE) pour
 ## Modélisation :
     - Diagramme ERD basé sur le schéma fourni.
     - Diagramme UML de cas d’utilisation.
+
+![image](https://github.com/user-attachments/assets/a0b08203-ca98-4531-a719-0c9afebdfea4)
+
     
