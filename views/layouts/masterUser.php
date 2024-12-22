@@ -1,5 +1,12 @@
 <?php
 session_start();
+
+if (isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header('Location: ../login/login.php'); 
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +70,21 @@ session_start();
                     <li><a class="hover:text-indigo-700" href="#">Services</a></li>
                     <li><a class="hover:text-indigo-700" href="#">Témoignages</a></li>
                 </ul>
-                <a class="p-3 font-bold rounded bg-indigo-700 text-white" href="#">Nous contacter</a>
+                <div class="flex gap-2">
+                    <?php
+                        if (isset($_SESSION['full_name'])) {
+                            echo "<h1 class=\"border-2 border-indigo-700 text-white rounded-lg p-[2px] pl-10 pr-10 bg-indigo-700\">" . $_SESSION['full_name'] . "</h1>";
+
+                        } else {
+                            echo "";
+                        }
+                    ?>  
+
+                    <form action="" method="POST">
+                        <button type="submit" name="logout" class="bg-indigo-700 text-white px-2 py-1 rounded hover:bg-gray-500"><i class="bi bi-box-arrow-right"></i>Logout</button>
+                    </form>
+                </div>
+                
             </nav>
             <div class="my-10 flex flex-col items-center md:flex-row ">
                 <div class="w-full px-4 py-8 mb-8 order-2 md:order-1 md:w-1/2  md:mb-0">
