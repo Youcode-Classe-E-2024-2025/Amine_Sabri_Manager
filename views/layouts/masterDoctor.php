@@ -350,6 +350,13 @@ if (isset($_POST['logout'])) {
           const card_rendez_vous = document.querySelectorAll(".card-rendez-vous");
           const card_rendez_vousToDay = document.querySelector(".card-rendez-vousToDay");
           const card_dossier_medical= document.querySelectorAll(".card_dossier_medical");
+          card_rendez_vous.forEach(card => {
+            card.addEventListener("click", function() {
+              contentAll_rendez_vous.classList.remove("hidden");
+              contentAll_rendez_vousToDay.classList.add("hidden");
+              dossier_medical.classList.add("hidden");
+            });
+          });
     </script>
   </body>
 </html>
