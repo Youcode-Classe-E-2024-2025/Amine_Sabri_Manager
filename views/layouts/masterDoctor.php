@@ -311,40 +311,41 @@ if (isset($_POST['logout'])) {
                   echo $content_dossier;
                 ?>
              </section>
-            
         </main>
       </div>
     </div>
 
     <script>
+          // const contentAll_rendez_vous = document.querySelector(".contentAll_rendez_vous");
+          // const contentAll_rendez_vousToDay = document.querySelector(".contentAll_rendez_vousToDay");
+          // const dossier_medical = document.querySelector(".dossier_medical");
+          // const card_rendez_vous = document.querySelectorAll(".card-rendez-vous");
+          // const card_rendez_vousToDay = document.querySelector(".card-rendez-vousToDay");
+          // const card_dossier_medical= document.querySelectorAll(".card_dossier_medical");
+
+          // card_rendez_vous.forEach(card => {
+          //   card.addEventListener("click", function() {
+          //     contentAll_rendez_vous.classList.remove("hidden");
+          //     contentAll_rendez_vousToDay.classList.add("hidden");
+          //     dossier_medical.classList.add("hidden");
+          //   });
+          // });
+
+          // card_rendez_vousToDay.addEventListener("click",function(){
+          //   contentAll_rendez_vousToDay.classList.remove("hidden");
+          //   contentAll_rendez_vous.classList.add("hidden");
+          //   dossier_medical.classList.add("hidden");
+          // });
+
+          // card_dossier_medical.forEach(card => {
+          //   card.addEventListener("click", function() {
+          //     dossier_medical.classList.remove("hidden");
+          //     contentAll_rendez_vousToDay.classList.add("hidden");
+          //     contentAll_rendez_vous.classList.add("hidden");
+          //   });
+          // });
           const contentAll_rendez_vous = document.querySelector(".contentAll_rendez_vous");
-          const contentAll_rendez_vousToDay = document.querySelector(".contentAll_rendez_vousToDay");
-          const dossier_medical = document.querySelector(".dossier_medical");
-          const card_rendez_vous = document.querySelectorAll(".card-rendez-vous");
-          const card_rendez_vousToDay = document.querySelector(".card-rendez-vousToDay");
-          const card_dossier_medical= document.querySelectorAll(".card_dossier_medical");
-
-          card_rendez_vous.forEach(card => {
-            card.addEventListener("click", function() {
-              contentAll_rendez_vous.classList.remove("hidden");
-              contentAll_rendez_vousToDay.classList.add("hidden");
-              dossier_medical.classList.add("hidden");
-            });
-          });
-
-          card_rendez_vousToDay.addEventListener("click",function(){
-            contentAll_rendez_vousToDay.classList.remove("hidden");
-            contentAll_rendez_vous.classList.add("hidden");
-            dossier_medical.classList.add("hidden");
-          });
-
-          card_dossier_medical.forEach(card => {
-            card.addEventListener("click", function() {
-              dossier_medical.classList.remove("hidden");
-              contentAll_rendez_vousToDay.classList.add("hidden");
-              contentAll_rendez_vous.classList.add("hidden");
-            });
-          });
+          contentAll_rendez_vousToDay = document.querySelector(".contentAll_rendez_vousToDay")
     </script>
   </body>
 </html>
