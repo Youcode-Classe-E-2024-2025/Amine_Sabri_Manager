@@ -349,6 +349,7 @@ if (isset($_POST['logout'])) {
           const dossier_medical = document.querySelector(".dossier_medical");
           const card_rendez_vous = document.querySelectorAll(".card-rendez-vous");
           const card_rendez_vousToDay = document.querySelector(".card-rendez-vousToDay");
+          const card_dossier_medical= document.querySelectorAll(".card_dossier_medical");
     </script>
   </body>
 </html>
